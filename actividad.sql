@@ -10,9 +10,7 @@ SELECT nombres, edad FROM users WHERE edad >= 20 AND edad <= 30 AND genero = "M"
 
 -- 3. Quién es la persona con menos edad de la base de datos.
 
-    SELECT MIN(edad) FROM users
-
-
+SELECT MIN(edad) FROM users
 
 -- 4. Cuantos usuarios hay registrados en la base de datos.
 
