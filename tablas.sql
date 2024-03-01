@@ -51,7 +51,7 @@ DROP VIEW carros_rojos
 
 select * from carros_rojos
 
-select * from vehiculos
+select * from colores
 
 select * from tipo_vehiculo
 
