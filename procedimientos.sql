@@ -36,17 +36,17 @@ delimiter //
 
   CREATE PROCEDURE seleccionar_tipo (in id_car INT)
   begin
-  SELECT * FROM vehiculos INNER JOIN tipo_vehiculo WHERE vehiculos.id_tipo = tipo_vehiculo.id;
+  SELECT vehiculos.modelo, vehiculos.id_tipo, tipo_vehiculo.tipo FROM vehiculos INNER JOIN tipo_vehiculo ON vehiculos.id_tipo = id_car;
   end
 // delimiter 
 
-DROP Procedure actualizar_color
+DROP Procedure seleccionar_tipo
 
 call cambiar_modelo_automovil ("Camaro", "CAMARO");
 call agregar_vehiculo ("Audi SR6", 1, 4);
 call eliminar_vehiculo (6);
 call actualizar_color ("Gris", "Amarillo");
-call seleccionar_tipo (1)
+call seleccionar_tipo (2)
 
 
 select * from vehiculos
