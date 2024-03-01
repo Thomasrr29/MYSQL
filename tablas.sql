@@ -1,6 +1,7 @@
 use bo57p3njkuyfdd3bqpe1
 
 CREATE TABLE colores (id INT PRIMARY KEY AUTO_INCREMENT, color VARCHAR(45));
+
 INSERT INTO colores (color) VALUES ("Rojo"), ("Azul"), ("Verde"), ("Negro"), ("Gris");
 
 CREATE TABLE marcas (id INT PRIMARY KEY AUTO_INCREMENT, marca VARCHAR(45));
@@ -31,9 +32,28 @@ UPDATE vehiculos SET modelo = "KIA R8" WHERE modelo = "AUDI R8"
 SELECT vehiculos.modelo, colores.color, tipo_vehiculo.tipo, marcas.marca FROM vehiculos INNER JOIN colores INNER JOIN tipo_vehiculo INNER JOIN marcas WHERE 
 vehiculos.color_id = colores.id AND 
 vehiculos.id_tipo = tipo_vehiculo.id AND 
-tipo_vehiculo.id_marca = marcas.id 
+tipo_vehiculo.tipo_id_marca = marcas.id 
 
 
+CREATE VIEW vista_colores_disponibles as SELECT * FROM colores WHERE color IS NOT NULL
+
+CREATE VIEW carros_deportivos as SELECT * FROM vehiculos WHERE id_tipo = 3
+
+CREATE VIEW vista_tipos_vehiculo as SELECT vehiculos.modelo, tipo_vehiculo.tipo_id_marca, tipo_vehiculo.tipo FROM vehiculos INNER JOIN tipo_vehiculo WHERE tipo_vehiculo.id = vehiculos.id_tipo
+
+CREATE VIEW marcas_registradas as SELECT marca FROM marcas WHERE marca IS NOT NULL;
+
+CREATE VIEW carros_rojos as SELECT vehiculos.id_vehiculo, vehiculos.modelo, colores.color FROM vehiculos INNER JOIN colores ON vehiculos.color_id = colores.id WHERE colores.color = "Rojo"
+
+ALTER TABLE vehiculos CHANGE id id_vehiculo INT AUTO_INCREMENT;
+
+DROP VIEW carros_rojos
+
+select * from carros_rojos
+
+select * from vehiculos
+
+select * from tipo_vehiculo
 
 
 
